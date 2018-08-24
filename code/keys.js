@@ -1,4 +1,4 @@
-console.log('this is loaded');
+//keys.js
 
 const spotify = {
   id: process.env.SPOTIFY_ID,
