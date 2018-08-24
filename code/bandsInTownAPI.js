@@ -15,16 +15,45 @@ function console_log(loopMod, jsonData, artist) {
     const pageBreakSolid = `===============================================\n`
     const pageBreakSoft = `-----------------------------------------------\n`
 
-    console.log(pageBreakSolid);
-    console.log(`\t\t` + artist.toUpperCase() + `\n`);
-    console.log(pageBreakSolid);
+    //======================
 
-    for (let i = 0; i < loopMod; i++) {            
-        console.log('\t' + jsonData[i].venue.name);
-        console.log('\t' + jsonData[i].venue.city + ", " + jsonData[i].venue.region);
-        console.log('\t' + moment(jsonData[i].datetime).format("YYYY-MM-DD") + '\n');
-        console.log(pageBreakSoft);
+    const titleArray = [
+        pageBreakSolid,
+        `\t\t` + artist.toUpperCase() + `\n` ,
+        pageBreakSolid
+    ];
+
+    titleArray.forEach(function(titlePiece) {
+        console.log(titlePiece)
+    });
+
+    // console.log(pageBreakSolid);
+    // console.log(`\t\t` + artist.toUpperCase() + `\n`);
+    // console.log(pageBreakSolid);
+
+    //======================
+
+    //======================
+
+    for (let i = 0; i < loopMod; i++) {
+        const bodyArray = [
+            '\t' + jsonData[i].venue.name,
+            '\t' + jsonData[i].venue.city + ", " + jsonData[i].venue.region,
+            '\t' + moment(jsonData[i].datetime).format("YYYY-MM-DD") + '\n',
+            pageBreakSoft
+        ]
+
+        bodyArray.forEach(function(bodyPiece) {
+            console.log(bodyPiece);
+        });
+
+        // console.log('\t' + jsonData[i].venue.name);
+        // console.log('\t' + jsonData[i].venue.city + ", " + jsonData[i].venue.region);
+        // console.log('\t' + moment(jsonData[i].datetime).format("YYYY-MM-DD") + '\n');
+        // console.log(pageBreakSoft);
     }
+
+    //======================
 }
 
 function search_concerts(subject) {

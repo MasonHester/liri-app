@@ -4,9 +4,8 @@
 require("dotenv").config();
 
 //Links to other files
-const keys = require("./keys.js");
-    
 const search_concerts = require("./bandsInTownAPI.js");
+const search_song = require("./spotifyAPI");
 
 console.log("--")
 console.log("Processing Input");
@@ -24,4 +23,8 @@ let subject = userInput.slice(3);
 
 if(action === "concert-this") {
     search_concerts(subject);
+}
+
+else if(action === "spotify-this-song") {
+    search_song(subject);
 }
