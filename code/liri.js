@@ -17,17 +17,11 @@ const userInput = process.argv
 
 const action = userInput[2];
 
-const subject = userInput.slice(3);
+let subject = userInput.slice(3);
 
 // console.log("action: " + action);
 // console.log("subject: " + subject);
 
 if(action === "concert-this") {
-    if (subject) {
-        search_concerts(subject);
-    }
-    
-    else {
-        subject = "watsky"
-    }
+    search_concerts(subject);
 }
