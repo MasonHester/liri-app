@@ -12,10 +12,8 @@ const keys = require("./keys.js");
 
 //loopMod used to limit to 5
 function console_log(loopMod, jsonData, artist) {
-    const pageBreakSolid = `===============================================\n`
-    const pageBreakSoft = `-----------------------------------------------\n`
-
-    //======================
+    const pageBreakSolid = `===============================================\n`;
+    const pageBreakSoft = `-----------------------------------------------\n`;
 
     const titleArray = [
         pageBreakSolid,
@@ -23,17 +21,9 @@ function console_log(loopMod, jsonData, artist) {
         pageBreakSolid
     ];
 
-    titleArray.forEach(function(titlePiece) {
-        console.log(titlePiece)
+    titleArray.forEach(function(element) {
+        console.log(element);
     });
-
-    // console.log(pageBreakSolid);
-    // console.log(`\t\t` + artist.toUpperCase() + `\n`);
-    // console.log(pageBreakSolid);
-
-    //======================
-
-    //======================
 
     for (let i = 0; i < loopMod; i++) {
         const bodyArray = [
@@ -41,19 +31,12 @@ function console_log(loopMod, jsonData, artist) {
             '\t' + jsonData[i].venue.city + ", " + jsonData[i].venue.region,
             '\t' + moment(jsonData[i].datetime).format("YYYY-MM-DD") + '\n',
             pageBreakSoft
-        ]
+        ];
 
-        bodyArray.forEach(function(bodyPiece) {
-            console.log(bodyPiece);
+        bodyArray.forEach(function(element) {
+            console.log(element);
         });
-
-        // console.log('\t' + jsonData[i].venue.name);
-        // console.log('\t' + jsonData[i].venue.city + ", " + jsonData[i].venue.region);
-        // console.log('\t' + moment(jsonData[i].datetime).format("YYYY-MM-DD") + '\n');
-        // console.log(pageBreakSoft);
     }
-
-    //======================
 }
 
 function search_concerts(subject) {
@@ -75,16 +58,16 @@ function search_concerts(subject) {
     }
 
     const appID = keys.bandsInTown.apiKey;
-    const URL = `https://rest.bandsintown.com/artists/${artist}/events?app_id=${appID}`;
+    const queryURL = `https://rest.bandsintown.com/artists/${artist}/events?app_id=${appID}`;
 
-    request(URL, function(err, response, body) {
+    request(queryURL, function(err, response, body) {
         //Shows error if there is one
         if (err && response.statusCode === 200) {
             console.log(`Error: ${err}`);
         }
 
         else {
-            console.log(`Bands In Town Connection Success\n`)
+            console.log(`Bands In Town Connection Success\n`);
             //Manipulates data for use
             const initial = JSON.stringify(body);
             const stringified = JSON.parse(initial);
@@ -101,14 +84,20 @@ function search_concerts(subject) {
             }
             
             else {
-                const pageBreakSolid = `===============================================\n`
-                const pageBreakSoft = `-----------------------------------------------\n`
+                const pageBreakSolid = `===============================================\n`;
+                const pageBreakSoft = `-----------------------------------------------\n`;
 
-                console.log(pageBreakSolid);
-                console.log(`\t\t` + artistDisplayName.toUpperCase() + `\n`);
-                console.log(pageBreakSolid);
-                console.log(`Sorry it looks like this band isnt on tour anytime soon\n`);
-                console.log(pageBreakSoft);
+                const fullArray = [
+                    pageBreakSolid,
+                    `\t\t` + artistDisplayName.toUpperCase() + `\n`,
+                    pageBreakSolid,
+                    `Sorry it looks like this band isnt on tour anytime soon\n`,
+                    pageBreakSoft
+                ]
+
+                fullArray.forEach(function(element) {
+                    console.log(element);
+                });
             }            
         }        
     });
