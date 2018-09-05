@@ -12,8 +12,6 @@ const search_song = require("./spotifyAPI");
 const search_movie = require("./omdbAPI.js");
 const do_what_it_says = require("./doWhatItSays.js");
 
-console.log(`\nProcessing Input`);
-
 function options_search() {
     inquirer.prompt({
         name: "action",
@@ -21,7 +19,7 @@ function options_search() {
         message: "What would you like to do?",
         choices: [
             "Get a list of upcoming concerts for an artist",
-            "Find all artists who appear more than once",
+            "Get information about a song",
             "Find data within a specific range",
             "Search for a specific song"
         ]
@@ -30,8 +28,8 @@ function options_search() {
         if(answer.action === "Get a list of upcoming concerts for an artist") {
             search_concerts();
         }
-        else if(answer.action === "Find all artists who appear more than once") {
-            console.log(`In second`);
+        else if(answer.action === "Get information about a song") {
+            search_song()
         }
         else {
             console.log(`...`);
@@ -70,16 +68,15 @@ function process_action(userInput) {
     }
     
     else {
-        console.log(
-        `\nAction not recognized, list of commands (Bars not needed):\n
-            \t> concert-this |Band Name|\n
-                \t\tGives a list of concert info for a band\n
-            \t> spotify-this-song |Song Name|\n
-                \t\tGives a list of song info (artist, album, preview URL\n
-            \t> movie-this |Movie Name|\n
-                \t\tGives a list of info about a movie\n
-            \t> do-what-it-says\n
-                \t\tReads a text file and executes a mentioned action with a given subject`)
+        console.log(`\nAction not recognized, list of commands (Bars not needed):`);
+        console.log(`\t> concert-this |Band Name|`);
+        console.log(`\t\tGives a list of concert info for a band`);
+        console.log(`\t> spotify-this-song |Song Name|`);
+        console.log(`\t\tGives a list of song info (artist, album, preview URL`);
+        console.log(`\t> movie-this |Movie Name|`);
+        console.log(`\t\tGives a list of info about a movie`);
+        console.log(`\t> do-what-it-says`);
+        console.log(`\t\tReads a text file and executes a mentioned action with a given subject`);
     }
 }
 
