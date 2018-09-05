@@ -6,6 +6,7 @@ require("dotenv").config();
 //npm linking
 const request = require("request");
 const moment = require("moment");
+const inquirer = require("inquirer");
 
 //Links to other files
 const keys = require("./keys.js");
@@ -39,24 +40,8 @@ function console_log(loopMod, jsonData, artist) {
     }
 }
 
-function search_concerts(subject) {
-    //Sets default value
-    let artist = "watsky";
-    let artistDisplayName = "watsky";
-
-    //If user provides input changes it accordingly
-    if(subject[0]) {
-        if(subject[1]) {
-            artist = subject.join("+");
-            artistDisplayName = subject.join(" ");
-        }
-
-        else {
-            artist = subject[0];
-            artistDisplayName = subject[0];
-        }
-    }
-
+function search_concert(artist, artistDisplayName) {
+    console.log(artistDisplayName);
     const appID = keys.bandsInTown.apiKey;
     const queryURL = `https://rest.bandsintown.com/artists/${artist}/events?app_id=${appID}`;
 
@@ -98,9 +83,44 @@ function search_concerts(subject) {
                 fullArray.forEach(function(element) {
                     console.log(element);
                 });
-            }            
-        }        
+            }
+        }
     });
 }
 
-module.exports = search_concerts
+function get_concert_input(subject) {
+    //If user provides input changes it accordingly
+    if(!subject) {
+        inquirer.prompt({
+            name: "artist",
+            type: "input",
+            message: "What artist would you like to search for?"
+        }).then(function(answer) {
+            if(answer.artist !== "") {
+                let input = answer.artist.replace(/ /g,"+");
+                search_concert(input, answer.artist);
+            }
+
+            else {
+                console.log("Please enter an artist")
+                search_concerts();
+            }
+        });
+    }
+    else {
+        if(subject[1]) {
+            
+            search_concert(subject.join("+"), subject.join(" "))
+        }
+
+        else if(subject[0] !== undefined) {
+            search_concert(subject[0], subject[0])
+        }
+
+        else {
+            search_concert("watsky", "watsky")
+        }
+    }
+}
+
+module.exports = get_concert_input
