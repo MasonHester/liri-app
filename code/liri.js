@@ -20,19 +20,40 @@ function options_search() {
         choices: [
             "Get a list of upcoming concerts for an artist",
             "Get information about a song",
-            "Find data within a specific range",
-            "Search for a specific song"
+            "Get informtion about a movie",
+            "Do what the txt file says",
+            "Exit App"
         ]
     }).then(function(answer) {
         console.log(answer.action);
         if(answer.action === "Get a list of upcoming concerts for an artist") {
-            search_concerts();
+            search_concerts(undefined, options_search);
         }
+        
         else if(answer.action === "Get information about a song") {
-            search_song()
+            search_song(undefined, options_search);
         }
+
+        else if(answer.action === "Get informtion about a movie") {
+            search_movie(undefined, options_search);
+        }
+
+        else if(answer.action === "Do what the txt file says") {
+            do_what_it_says(function(err, data) {
+                if(err) return console.log(err);
+                process_action(data);
+            });
+        }
+
+        else if (answer.action === "Exit App") {
+            console.log("...Exiting Application...")
+            process.exit();
+        }
+
         else {
-            console.log(`...`);
+            console.log("Unsure how you got here...");
+            console.log("just dont do what you did again");
+            options_search();
         }
     });
 }
@@ -44,11 +65,11 @@ function process_action(userInput) {
     let subject = userInput.slice(3);
 
     if(action === "concert-this") {
-        search_concerts(subject);
+        search_concerts(subject, options_search);
     }
     
     else if(action === "spotify-this-song") {
-        search_song(subject);
+        search_song(subject, options_search);
     }
     
     else if(action === "movie-this") {
@@ -59,7 +80,8 @@ function process_action(userInput) {
         do_what_it_says(function(err, data) {
             if(err) return console.log(err);
             console.log(data);
-        })
+            options_search();
+        });
     }
     
     else if(!action) {

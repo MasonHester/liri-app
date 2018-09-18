@@ -28,7 +28,7 @@ function console_log(loopMod, jsonData, artist) {
     }
 }
 
-function search_concert(artist, artistDisplayName) {
+function search_concert(artist, artistDisplayName, _cb) {
     const appID = keys.bandsInTown.apiKey;
     const queryURL = `https://rest.bandsintown.com/artists/${artist}/events?app_id=${appID}`;
 
@@ -46,11 +46,13 @@ function search_concert(artist, artistDisplayName) {
 
             if(jsonData[0]) {
                 if(jsonData.length < 5) {
-                    console_log(jsonData.length, jsonData, artistDisplayName);                              
+                    console_log(jsonData.length, jsonData, artistDisplayName);
+                    _cb();                  
                 }
     
                 else {
                     console_log(5, jsonData, artistDisplayName);
+                    _cb();
                 }
             }
             
@@ -64,12 +66,14 @@ function search_concert(artist, artistDisplayName) {
                 console.log(`\tSorry it looks like this band`);
                 console.log(`\tisnt on tour anytime soon`);
                 console.log(`\n${pageBreakSoft}`);
+
+                _cb();
             }
         }
     });
 }
 
-function get_concert_input(subject) {
+function get_concert_input(subject, _cb) {
     //If user provides input changes it accordingly
     if(!subject) {
         inquirer.prompt({
@@ -78,28 +82,28 @@ function get_concert_input(subject) {
             message: "What artist would you like to search for?"
         }).then(function(answer) {
             if(answer.artist !== "") {
-                let input = answer.artist.replace(/ /g,"+");
-                search_concert(input, answer.artist);
+                const input = answer.artist.replace(/ /g,"+");
+                search_concert(input, answer.artist, _cb);
             }
 
             else {
                 console.log("Please enter an artist")
-                get_concert_input();
+                get_concert_input(undefined, _cb);
             }
         });
     }
 
     else {
         if(subject[1]) {            
-            search_concert(subject.join("+"), subject.join(" "))
+            search_concert(subject.join("+"), subject.join(" "), _cb)
         }
 
         else if(subject[0] !== undefined) {
-            search_concert(subject[0], subject[0])
+            search_concert(subject[0], subject[0], _cb)
         }
 
         else {
-            search_concert("watsky", "watsky")
+            search_concert("watsky", "watsky", _cb)
         }
     }
 }
