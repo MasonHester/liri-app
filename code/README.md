@@ -6,6 +6,10 @@ This App is meant to utilize exports and npm packages through the CLI to provide
 ### Tools used
 - Javascript
 - NPM
+  - inquirer
+  - moment
+  - node-spotify-api
+  - request
 - Node
 
 ### How to use:
