@@ -32,7 +32,8 @@ This App is meant to utilize exports and npm packages through the CLI to provide
 2. Clone this repo onto your computer
 3. Navigate to the VM in your CLI and run `vagrant up`
 4. Run `vagrant ssh`
-5. Navigate into the code folder and run `node liri.js`
+5. Navigate into the code folder and run `npm install`
+6. Run `node liri.js`
 
 #### Not Using the VM Provided
 1. Clone this repo onto your computer
