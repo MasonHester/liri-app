@@ -8,7 +8,7 @@
   - [Setup](#setup)
     - [Using the VM Provided](#using-the-vm-provided)
     - [Not Using the VM Provided](#not-using-the-vm-provided)
-- [Options](#options)
+  - [Options](#options)
 
 ## Requirements
 - [Nodejs](https://nodejs.org/en/download/ "Install Node")
@@ -24,6 +24,10 @@ This App is meant to utilize exports and npm packages through the CLI to provide
   - [node-spotify-api](https://www.npmjs.com/package/node-spotify-api "Node-Spotify-Api's NPM page")
   - [request](https://www.npmjs.com/package/request "Request's NPM page")
 - Node
+- API's
+  - [Bands in Town](http://www.artists.bandsintown.com/bandsintown-api "Bands in Town API documentation")
+  - [Spotify](https://developer.spotify.com/documentation/web-api/ "Spotify API documentation")
+  - [OMDB](http://www.omdbapi.com/ "OMDB API documentation")
 
 ## How to Use
 ### Setup
@@ -37,25 +41,22 @@ This App is meant to utilize exports and npm packages through the CLI to provide
 
 #### Not Using the VM Provided
 1. Clone this repo onto your computer
-2. Move the contents of the code folder to your preffered VM
+2. Move the contents of the code folder to your preferred VM
 3. Install the dependencies
 4. Run `node liri.js` to start the app
 
-## Options:
+### Options:
 All of these commands should be run in the CLI, CTRL + C can exit if needed
 Variables in between the |'s are placeholders, do not include the |'s in the search
 
 - `node liri.js`
   - This is the main way to interact with the app. This will present you with a list of options for searching
 - `node liri.js concert-this |artist name|`
-  - This will allow you to search for concerts for a band using the Bands In Town API
-    - Bands in Town API Link: http://www.artists.bandsintown.com/bandsintown-api
+  - This will allow you to search for concerts for a band using the [Bands in Town API](http://www.artists.bandsintown.com/bandsintown-api "Bands in Town API documentation")
 - `node liri.js spotify-this-song |song name|`
-  - This will allow you to search for a song through the Spotify Api
-    - Spotify API Link: https://developer.spotify.com/documentation/web-api/
+  - This will allow you to search for a song through the [Spotify API](https://developer.spotify.com/documentation/web-api/ "Spotify API documentation")
 - `node liri.js movie-this |movie name|`
-  - This will allow you to get info for a movie through the OMDB API
-    - OMDB API Link: http://www.omdbapi.com/
+  - This will allow you to get info for a movie through the [OMDB API](http://www.omdbapi.com/ "OMDB API documentation")
 - `node liri.js do-what-it-says`
   - This will read a txt file and run the search on it
     - must be formatted as |action|,"|subject|"
