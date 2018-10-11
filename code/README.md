@@ -6,16 +6,16 @@ This App is meant to utilize exports and npm packages through the CLI to provide
 ### Tools used
 - Javascript
 - NPM
-  - inquirer
-  - moment
-  - node-spotify-api
-  - request
+  - [inquirer](https://www.npmjs.com/package/inquirer "Inquirer's NPM page")
+  - [moment](https://www.npmjs.com/package/moment "Moment's NPM page")
+  - [node-spotify-api](https://www.npmjs.com/package/node-spotify-api "Node-Spotify-Api's NPM page")
+  - [request](https://www.npmjs.com/package/request "Request's NPM page")
 - Node
 
 ### How to use:
 - Spin up a VM, Heres a link to one if needed:
  - https://github.com/switch120/ubuntu-vagrant-shell
-- clone the repo, If using the ubuntu clone it into the code folder
+- Clone the repo, If using the ubuntu clone it into the code folder
 - Navigate to the files and run `npm install` in the CLI
 
 ### Options:
