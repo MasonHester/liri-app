@@ -4,12 +4,15 @@
 - [Description](#description)
 - [Tools Used](#tools-used)
 - [How to Use](#how-to-use)
+  - [Setup](#setup)
   - [Using the VM Provided](#using-the-vm-provided)
+  - [Not Using the VM Provided](#not-using-the-vm-provided)
+- 
 
-### Description
+## Description
 This App is meant to utilize exports and npm packages through the CLI to provide information for a wide array of medias
 
-### Tools Used
+## Tools Used
 - Javascript
 - NPM
   - [inquirer](https://www.npmjs.com/package/inquirer "Inquirer's NPM page")
@@ -18,15 +21,18 @@ This App is meant to utilize exports and npm packages through the CLI to provide
   - [request](https://www.npmjs.com/package/request "Request's NPM page")
 - Node
 
-### How to Use:
+## How to Use
+### Setup
+  ### Using the VM Provided
+  1. If you are new to using VM's check the
 
-#### Using the VM Provided:
-1. If you are new to using VM's check the 
+  ### Not Using the VM Provided
 
 - Clone the repo, If using the ubuntu clone it into the code folder
 - Navigate to the files and run `npm install` in the CLI
 
-### Options:
+## Options:
+---
 All of these commands should be run in the CLI, CTRL + C can exit if needed
 Variables in between the |'s are placeholders, do not include the |'s in the search
 
